@@ -47,9 +47,13 @@ class mainVC: UIViewController {
             camOutput=AVCapturePhotoOutput()
             if captureSession.canAddOutput(camOutput)==true{
                 captureSession.addOutput(camOutput!)
+                
                 prevLayer=AVCaptureVideoPreviewLayer(session:captureSession!)
                 prevLayer.videoGravity=AVLayerVideoGravity.resizeAspect
                 prevLayer.connection?.videoOrientation=AVCaptureVideoOrientation.portrait
+                
+                camView.layer.addSublayer(prevLayer!)
+                captureSession.startRunning()
                 
             }
         }catch{
