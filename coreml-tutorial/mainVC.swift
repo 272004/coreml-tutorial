@@ -9,11 +9,13 @@
 import UIKit
 import AVFoundation
 
-class mainVC: UIViewController {
+class mainVC: UIViewController,AVCapturePhotoCaptureDelegate {
     
     var captureSession:AVCaptureSession!
-    var camOutput: AVCaptureOutput!
+    var camOutput: AVCapturePhotoOutput!
     var prevLayer:AVCaptureVideoPreviewLayer!
+    
+    var photoData:Data?
 
     
     @IBOutlet weak var outputImageView: RndShadowImageView!
@@ -33,6 +35,10 @@ class mainVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let tap=UITapGestureRecognizer(target: self, action: #selector(onTApCamView))
+        tap.numberOfTapsRequired = 1
+        
         captureSession=AVCaptureSession()
         captureSession.sessionPreset=AVCaptureSession.Preset.hd1920x1080
         
@@ -53,6 +59,7 @@ class mainVC: UIViewController {
                 prevLayer.connection?.videoOrientation=AVCaptureVideoOrientation.portrait
                 
                 camView.layer.addSublayer(prevLayer!)
+                camView.addGestureRecognizer(tap)
                 captureSession.startRunning()
                 
             }
@@ -60,6 +67,27 @@ class mainVC: UIViewController {
             debugPrint(error)
         }
         
+        
+        
     }
+    
+    @objc func onTApCamView(){
+        let set = AVCapturePhotoSettings()
+        set.previewPhotoFormat=set.embeddedThumbnailPhotoFormat
+        camOutput.capturePhoto(with: set, delegate: self)
+        
+        
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error{
+            debugPrint(error)
+        }else {
+            photoData=photo.fileDataRepresentation()
+            let image=UIImage(data: photoData!)
+            self.outputImageView.image=image
+        }
+    }
+    
 }
 
