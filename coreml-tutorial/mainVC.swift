@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class mainVC: UIViewController {
+    
+    var captureSession:AVCaptureSession!
+    var camOutput: AVCaptureOutput!
+    var prevLayer:AVCaptureVideoPreviewLayer!
 
     
     @IBOutlet weak var outputImageView: RndShadowImageView!
@@ -22,6 +27,14 @@ class mainVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        prevLayer.frame=camView.bounds
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        captureSession=AVCaptureSession()
+        captureSession.sessionPreset=AVCaptureSession.Preset.hd1920x1080
+    }
 }
 
