@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class mainVC: UIViewController {
 
+    
+    @IBOutlet weak var outputImageView: RndShadowImageView!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var confLabel: UILabel!
+    @IBOutlet weak var descLabelView: RndShadowView!
+    @IBOutlet weak var camView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
