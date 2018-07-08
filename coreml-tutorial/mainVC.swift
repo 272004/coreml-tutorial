@@ -74,6 +74,20 @@ class mainVC: UIViewController,AVCapturePhotoCaptureDelegate {
     }
     
     func resMethod(request:VNRequest,error:Error?){
+        guard let results=request.results as? [VNClassificationObservation] else {return}
+        
+        for classification in results{
+            if classification.confidence<0.6{
+                self.descLabel.text="Im am not sure what is it. Can you please try again?"
+                self.confLabel.text=""
+                break
+            }else{
+                self.descLabel.text=classification.identifier
+                self.confLabel.text="I am \(classification.confidence*100)% confident!"
+                break
+                
+            }
+        }
         
     }
     
