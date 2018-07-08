@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import CoreML
+import Vision
 
 class mainVC: UIViewController,AVCapturePhotoCaptureDelegate {
     
@@ -71,6 +73,11 @@ class mainVC: UIViewController,AVCapturePhotoCaptureDelegate {
         
     }
     
+    func resMethod(request:VNRequest,error:Error?){
+        
+    }
+    
+    
     @objc func onTApCamView(){
         let set = AVCapturePhotoSettings()
         set.previewPhotoFormat=set.embeddedThumbnailPhotoFormat
@@ -84,6 +91,15 @@ class mainVC: UIViewController,AVCapturePhotoCaptureDelegate {
             debugPrint(error)
         }else {
             photoData=photo.fileDataRepresentation()
+            do{
+                let model=try VNCoreMLModel(for: SqueezeNet().model)
+                let request=VNCoreMLRequest(model: model, completionHandler: resMethod)
+                let handler=VNImageRequestHandler(data: photoData!)
+                try handler.perform([request])
+            }catch{
+                debugPrint(error)
+            }
+            
             let image=UIImage(data: photoData!)
             self.outputImageView.image=image
         }

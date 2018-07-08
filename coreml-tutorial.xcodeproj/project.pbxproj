@@ -14,6 +14,7 @@
 		7D6D3B0920F1947F00E212C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6D3B0720F1947F00E212C7 /* LaunchScreen.storyboard */; };
 		7D6D3B1520F1A64000E212C7 /* RndShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6D3B1420F1A64000E212C7 /* RndShadowView.swift */; };
 		7D6D3B1720F1A8C100E212C7 /* RndShadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6D3B1620F1A8C100E212C7 /* RndShadowImageView.swift */; };
+		7D6D3B1920F2901100E212C7 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7D6D3B1820F2901100E212C7 /* SqueezeNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7D6D3B0A20F1947F00E212C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D6D3B1420F1A64000E212C7 /* RndShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndShadowView.swift; sourceTree = "<group>"; };
 		7D6D3B1620F1A8C100E212C7 /* RndShadowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RndShadowImageView.swift; sourceTree = "<group>"; };
+		7D6D3B1820F2901100E212C7 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		7D6D3AFD20F1947C00E212C7 /* coreml-tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				7D6D3B1820F2901100E212C7 /* SqueezeNet.mlmodel */,
 				7D6D3B1320F1961400E212C7 /* Model */,
 				7D6D3B1220F1960A00E212C7 /* View */,
 				7D6D3B1120F195F800E212C7 /* Controller */,
@@ -175,6 +178,7 @@
 			files = (
 				7D6D3B1520F1A64000E212C7 /* RndShadowView.swift in Sources */,
 				7D6D3B0120F1947C00E212C7 /* mainVC.swift in Sources */,
+				7D6D3B1920F2901100E212C7 /* SqueezeNet.mlmodel in Sources */,
 				7D6D3AFF20F1947C00E212C7 /* AppDelegate.swift in Sources */,
 				7D6D3B1720F1A8C100E212C7 /* RndShadowImageView.swift in Sources */,
 			);
